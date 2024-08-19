@@ -2,6 +2,7 @@
 
 Follow these steps to set up and run the project:
 
+**Note:** Setup EcomAPI before setting up the backend
 1. **Go to the Parent Directory**:
    Navigate to the root directory where your `docker-compose.yml` file is located.
 
@@ -11,27 +12,9 @@ Follow these steps to set up and run the project:
    ```bash
    docker-compose up -d
    
-3. **Create the database**:
-Run following command to create the database
-    
-    ```bash
-   docker exec -it ecom-media-db mysql -u root -prootpasswd -e "CREATE DATABASE ecom_media;"
-   
-4. **Access the API Container**:
+3. **Access the API Container**:
 Execute the following command to enter the ecom-media-player-api container:
     ```bash
-   docker exec -it ecom-media-api bash
+   docker exec -it ecomapi bash
    composer install
    composer update
-   
-5. **Migrate the Database**:
-Run this command inside the container to migrate the database files:
-
-    ```bash
-    php artisan migrate
-
-6. **Seed the Database**:
-To seed the database entries, run the following command:
-
-    ```bash
-    php artisan db:seed
