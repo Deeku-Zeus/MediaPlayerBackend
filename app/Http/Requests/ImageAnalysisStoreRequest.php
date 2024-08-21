@@ -25,8 +25,6 @@ class ImageAnalysisStoreRequest extends FormRequest
      */
     public function rules(): array
     {
-        echo phpinfo();
-        exit;
         return [
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
             'videoName' => 'required|string|max:255',

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ImageAnalysisStoreRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class ImageAnalysisController extends ApiBaseController
 {
