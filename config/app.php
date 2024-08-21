@@ -54,6 +54,12 @@ return [
 
     'url' => env('APP_URL', 'http://localhost'),
 
+    'apiUrl' => [
+        'ecomApi' => env('ECOM_API_URL', 'http://localhost'),
+    ],
+
+    'sslVerify' => env('API_SSL_VERIFY', false),
+
     /*
     |--------------------------------------------------------------------------
     | Application Timezone
