@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ImageAnalysisStoreRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 
 class ImageAnalysisController extends ApiBaseController
 {
@@ -18,15 +19,18 @@ class ImageAnalysisController extends ApiBaseController
      *
      * @param ImageAnalysisStoreRequest $request
      */
-    public function storeRequest(ImageAnalysisStoreRequest $request){
-        // Log the file details
-        if ($request->hasFile('image')) {
-            $file = $request->file('image');
-            Log::info('File received: ' . $file->getClientOriginalName());
-        } else {
-            Log::warning('No file received in the request.');
-        }
-
-        // Your existing code to handle the request
+    public function storeRequest(ImageAnalysisStoreRequest $request)
+    {
+        $data = [
+            "result" => true,
+            "status" => "success",
+            "message" => "Image analyze request saved successfully.",
+            "is_analyzed" => false,
+            "request_token" => (string) Str::uuid().'-'.time()
+        ];
+        return response()->json(
+            $data,
+            empty($data) ? 204 : 200
+        );
     }
 }
