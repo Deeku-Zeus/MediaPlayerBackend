@@ -127,8 +127,6 @@
             if ($response->successful()) {
                 return $response->json()['token'];
             } else {
-                echo "no";
-                exit;
                 // Handle the error, e.g., throw an exception or return an error response
                 return response()->json(['error' => 'Unable to retrieve token'], 500);
             }
@@ -147,5 +145,32 @@
                 'Accept'        => 'application/json',
                 'Authorization' => sprintf('Bearer %s', $token)
             ]);
+        }
+        /**
+         * Create request header
+         *
+         * @return PendingRequest
+         */
+        private function createHeadersMl(): PendingRequest
+        {
+
+            return Http::retry(config('api.maxTryCounts'), config('api.apiWaitSeconds'), fn($exception, $request) => $exception instanceof ConnectionException)->withHeaders([
+                'Accept'        => 'application/json',
+            ]);
+        }
+        /**
+         * Call Internal API POST URI
+         *
+         * @param string $path (api path)
+         * @param array  $data (request data)
+         *
+         * @return mixed
+         * @throws ConnectionException
+         * @throws RequestException
+         */
+        public function postMl(string $path, array $data = []): mixed
+        {
+            $requestPath = $this->baseUri . "/" . $path;
+            return $this->createHeadersMl()->post($requestPath, $data)->throw()->json();
         }
     }

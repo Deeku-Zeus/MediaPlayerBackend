@@ -26,34 +26,53 @@
          */
         public function storeAnalyzeRequest($request): array
         {
-            $response = collect(['result'=>true,'status'=>'success','message'=>'Image analyze request saved successfully.']);
+            $response = collect(['result' => true, 'status' => 'success', 'message' => 'Image analyze request saved successfully.']);
             $request = collect($request);
             $requestToken = $request->get('request_token', (string)Str::uuid() . '-' . time());
             $filePath = $this->uploadFile($request->get('image'));
             $apiRequest = [
-                'image'     => $filePath,
+                'image'         => $filePath,
                 'request_token' => $requestToken,
-                'videoName'    => $request->get('videoName', null),
-                'timestamp'    => $request->get('timestamp', null),
-                'username'     => $request->get('username', null),
-                'profile_name' => $request->get('profile_name', null),
-                'is_analyzed'  => false
+                'videoName'     => $request->get('videoName', null),
+                'timestamp'     => $request->get('timestamp', null),
+                'username'      => $request->get('username', null),
+                'profile_name'  => $request->get('profile_name', null),
+                'is_analyzed'   => false
 
             ];
             $apiResponse = EcomApi::upsertImageAnalyzer($apiRequest);
-            if (!$apiResponse['result']){
+            if (!$apiResponse['result']) {
                 $requestToken = "";
-                $response->put('result',false);
-                $response->put('status',"error");
-                $response->put('message',"Upsert Image Analyzer API failed");
+                $response->put('result', false);
+                $response->put('status', "error");
+                $response->put('message', "Upsert Image Analyzer API failed");
             }
             //Call ML API as a parallel process
-            $response->put('is_analyzed',false);
-            $response->put('request_token',$requestToken);
-            $file = "testService".time();
+            $response->put('is_analyzed', false);
+            $response->put('request_token', $requestToken);
+            $file = "testService" . time();
             Storage::disk('public')->put($file, '');
             AnalyzeImage::dispatch($apiRequest);
             return $response->toArray();
+        }
+
+        /**
+         * Get analyzed data
+         *
+         * @param $request
+         *
+         * @return array
+         */
+        public function getDetectionResponse($request): array
+        {
+            $response = collect(['result' => true, 'status' => 'success', 'message' => 'Image analyze response fetched successfully.']);
+            $requestToken = collect($request)->get('request_token');
+            if (!$requestToken) {
+                $response->put('result', false);
+                $response->put('status', 'error');
+                $response->put('message', 'Request token required');
+            }
+            return EcomApi::getDetectionResponse(['request_token' => $requestToken]);
         }
 
         /**
@@ -68,7 +87,10 @@
             // Get the original file name
             $originalFileName = $file->getClientOriginalName();
 
-            // Store the file with the original name in the 'uploads' directory
-            return Storage::putFileAs('uploads', $file, $originalFileName);
+            // Store the file with the original name in the 'uploads' directory on the 'public' disk
+            $path = $file->storeAs('uploads', $originalFileName, 'public');
+
+            // Return the URL to access the file
+            return Storage::url($path);
         }
     }

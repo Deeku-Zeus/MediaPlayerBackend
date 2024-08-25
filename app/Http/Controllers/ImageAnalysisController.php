@@ -2,6 +2,7 @@
 
     namespace App\Http\Controllers;
 
+    use App\Http\Requests\GetDetectionResponseRequest;
     use App\Http\Requests\ImageAnalysisStoreRequest;
     use App\Repositories\ImageAnalyzer\ImageAnalyzerRepositoryInterface;
     use Illuminate\Http\JsonResponse;
@@ -26,6 +27,8 @@
          * Store the analyze request received from frontend
          *
          * @param ImageAnalysisStoreRequest $request
+         *
+         * @return \Illuminate\Http\JsonResponse
          */
         public function storeAnalyzeRequest(ImageAnalysisStoreRequest $request): JsonResponse
         {
@@ -34,6 +37,22 @@
             $request['image'] = $image;
             $data = $this->imageAnalyzer->storeAnalyzeRequest($request);
 
+            return response()->json(
+                $data,
+                empty($data) ? 204 : 200
+            );
+        }
+
+        /**
+         * Fetch the analyze data from ML
+         *
+         * @param \App\Http\Requests\GetDetectionResponseRequest $request
+         *
+         * @return \Illuminate\Http\JsonResponse
+         */
+        public function getDetectionResponse(GetDetectionResponseRequest $request): JsonResponse
+        {
+            $data = $this->imageAnalyzer->getDetectionResponse($request->all());
             return response()->json(
                 $data,
                 empty($data) ? 204 : 200

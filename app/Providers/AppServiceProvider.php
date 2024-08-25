@@ -12,6 +12,7 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->bind('EcomApi', \App\Services\Api\EcomApiServices::class);
+        $this->app->bind('AnalyzeApi', \App\Services\Api\AnalyzeApiServices::class);
     }
 
     /**
