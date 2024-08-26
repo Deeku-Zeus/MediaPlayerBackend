@@ -1,0 +1,50 @@
+2024-08-25 06:32:34,322 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-08-25 06:32:34,323 WARN No file matches via include "/etc/supervisor.d/*.ini"
+2024-08-25 06:32:34,324 INFO supervisord started with pid 29
+2024-08-25 06:32:35,335 INFO spawned: 'php-server' with pid 30
+2024-08-25 06:32:35,362 WARN exited: php-server (exit status 1; not expected)
+2024-08-25 06:32:36,365 INFO spawned: 'php-server' with pid 31
+2024-08-25 06:32:36,378 WARN exited: php-server (exit status 1; not expected)
+2024-08-25 06:32:38,387 INFO spawned: 'php-server' with pid 32
+2024-08-25 06:32:38,411 WARN exited: php-server (exit status 1; not expected)
+2024-08-25 06:32:41,430 INFO spawned: 'php-server' with pid 33
+2024-08-25 06:32:41,451 WARN exited: php-server (exit status 1; not expected)
+2024-08-25 06:32:42,458 INFO gave up: php-server entered FATAL state, too many start retries too quickly
+2024-08-25 06:32:49,493 WARN received SIGINT indicating exit request
+2024-08-25 06:34:46,188 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-08-25 06:34:46,188 WARN No file matches via include "/etc/supervisor.d/*.ini"
+2024-08-25 06:34:46,189 INFO supervisord started with pid 8
+2024-08-25 06:34:47,200 INFO spawned: 'php-server' with pid 9
+2024-08-25 06:34:47,222 WARN exited: php-server (exit status 1; not expected)
+2024-08-25 06:34:48,229 INFO spawned: 'php-server' with pid 10
+2024-08-25 06:34:48,250 WARN exited: php-server (exit status 1; not expected)
+2024-08-25 06:34:50,259 INFO spawned: 'php-server' with pid 11
+2024-08-25 06:34:50,266 WARN exited: php-server (exit status 1; not expected)
+2024-08-25 06:34:53,284 INFO spawned: 'php-server' with pid 12
+2024-08-25 06:34:53,290 WARN exited: php-server (exit status 1; not expected)
+2024-08-25 06:34:54,295 INFO gave up: php-server entered FATAL state, too many start retries too quickly
+2024-08-25 06:36:42,796 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-08-25 06:36:42,797 WARN No file matches via include "/etc/supervisor.d/*.ini"
+2024-08-25 06:36:42,800 INFO supervisord started with pid 21
+2024-08-25 06:36:43,811 INFO spawned: 'php-server' with pid 22
+2024-08-25 06:36:43,836 WARN exited: php-server (exit status 1; not expected)
+2024-08-25 06:36:44,846 INFO spawned: 'php-server' with pid 23
+2024-08-25 06:36:44,868 WARN exited: php-server (exit status 1; not expected)
+2024-08-25 06:36:46,884 INFO spawned: 'php-server' with pid 24
+2024-08-25 06:36:46,906 WARN exited: php-server (exit status 1; not expected)
+2024-08-25 06:36:49,924 INFO spawned: 'php-server' with pid 25
+2024-08-25 06:36:49,946 WARN exited: php-server (exit status 1; not expected)
+2024-08-25 06:36:50,952 INFO gave up: php-server entered FATAL state, too many start retries too quickly
+2024-08-25 06:36:51,957 WARN received SIGINT indicating exit request
+2024-08-25 06:37:44,042 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-08-25 06:37:44,042 WARN No file matches via include "/etc/supervisor.d/*.ini"
+2024-08-25 06:37:44,043 INFO supervisord started with pid 29
+2024-08-25 06:38:14,169 WARN received SIGINT indicating exit request
+2024-08-25 06:39:07,269 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-08-25 06:39:07,270 WARN No file matches via include "/etc/supervisor.d/laravel-worker.ini"
+2024-08-25 06:39:07,270 INFO supervisord started with pid 33
+2024-08-25 06:39:29,350 WARN received SIGINT indicating exit request
+2024-08-25 06:42:18,668 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2024-08-25 06:42:18,669 WARN No file matches via include "/etc/supervisor.d/laravel-worker.ini"
+2024-08-25 06:42:18,670 INFO supervisord started with pid 46
+2024-08-25 06:42:22,687 WARN received SIGINT indicating exit request
