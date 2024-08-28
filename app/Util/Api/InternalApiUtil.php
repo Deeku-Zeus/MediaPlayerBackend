@@ -9,6 +9,7 @@
     use Illuminate\Http\Client\RequestException;
     use Illuminate\Http\Client\Response;
     use Illuminate\Support\Facades\Http;
+    use Illuminate\Support\Facades\Log;
     use Tymon\JWTAuth\Facades\JWTAuth;
     use Tymon\JWTAuth\Token;
 

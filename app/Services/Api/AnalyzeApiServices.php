@@ -13,6 +13,7 @@
      */
     class AnalyzeApiServices
     {
+         const OBJECT_COUNT = 5;
         private InternalApiUtil $util;
 
         /**
@@ -24,14 +25,14 @@
         }
 
         /**
-         * @param $analyzeData
+         * @param $request
          *
          * @return mixed
-         * @throws RequestException
-         * @throws ConnectionException
+         * @throws \Illuminate\Http\Client\ConnectionException
+         * @throws \Illuminate\Http\Client\RequestException
          */
-        public function detect($analyzeData): mixed
+        public function detect($request): mixed
         {
-            return $this->util->postMl('', $analyzeData);
+            return $this->util->postMl('detect', $request);
         }
     }

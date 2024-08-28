@@ -2,14 +2,18 @@
 
     namespace App\Services\ImageAnalyzer;
 
+    use App\Facades\AnalyzeApi;
     use App\Facades\EcomApi;
     use App\Jobs\AnalyzeImage;
+    use Illuminate\Support\Facades\Crypt;
     use Illuminate\Support\Facades\DB;
+    use Illuminate\Support\Facades\Log;
     use Illuminate\Support\Facades\Storage;
     use Illuminate\Support\Str;
 
     class ImageAnalyzerService
     {
+        const OBJECT_COUNT = 5;
         /**
          * ImageAnalyzerService constructor.
          */
@@ -30,6 +34,7 @@
             $request = collect($request);
             $requestToken = $request->get('request_token', (string)Str::uuid() . '-' . time());
             $filePath = $this->uploadFile($request->get('image'));
+            $imagename =  basename($filePath);
             $apiRequest = [
                 'image'         => $filePath,
                 'request_token' => $requestToken,
@@ -50,9 +55,8 @@
             //Call ML API as a parallel process
             $response->put('is_analyzed', false);
             $response->put('request_token', $requestToken);
-            $file = "testService" . time();
-            Storage::disk('public')->put($file, '');
-            AnalyzeImage::dispatch($apiRequest);
+            $request = ['image'=>$imagename,'object_count'=>self::OBJECT_COUNT];
+            AnalyzeImage::dispatch($request,$requestToken);
             return $response->toArray();
         }
 

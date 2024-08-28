@@ -46,4 +46,15 @@
         {
             return $this->util->post('v1/ecomBackend/get/analyzedResponse', $request);
         }
+        /**
+         * @param $requestToken
+         *
+         * @return mixed
+         * @throws \Illuminate\Http\Client\ConnectionException
+         * @throws \Illuminate\Http\Client\RequestException
+         */
+        public function storeAnalyzedResponse($request): mixed
+        {
+            return $this->util->post('v1/ecomBackend/put/storeAnalyzedResponse', $request);
+        }
     }

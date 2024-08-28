@@ -56,6 +56,7 @@ return [
 
     'apiUrl' => [
         'ecomApi' => env('ECOM_API_URL', 'http://localhost'),
+        'mlApi' => env('ML_API_URL', 'http://localhost'),
     ],
 
     'sslVerify' => env('API_SSL_VERIFY', false),

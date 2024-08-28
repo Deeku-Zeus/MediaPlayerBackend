@@ -13,6 +13,7 @@ RUN apk update && apk add --no-cache \
     unzip \
     bash \
     mysql-client \
+    tmux \
     && docker-php-ext-install pdo pdo_mysql gd
 
 # Enable Apache mod_rewrite
