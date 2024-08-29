@@ -41,7 +41,6 @@
         public function handle()
         {
             $response = collect(AnalyzeApi::detect($this->apiRequest));
-            Log::info($response);
             $this->storeAnalyzedResponse($response,$this->requestToken);
         }
 
