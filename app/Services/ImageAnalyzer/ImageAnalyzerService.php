@@ -83,6 +83,44 @@
         }
 
         /**
+         * Update Analyzer Response
+         *
+         * @param $request
+         *
+         * @return array
+         */
+        public function updateAnalyzeData($request): array
+        {
+            $request = collect($request);
+            $uid = $request->get('uid');
+            if (!$uid) {
+                return [
+                    "result"  => false,
+                    "status"  => "failed",
+                    "message" => "UID is not provided",
+                ];
+            }
+            $tags = $request->get('tags');
+            $color = $request->get('color');
+            if (empty($tags) && empty($color)) {
+                return [
+                    "result"  => false,
+                    "status"  => "failed",
+                    "message" => "Nothing to update",
+                ];
+            }
+            $apiRequest = collect();
+            $apiRequest->put('uid',$uid);
+            if (!empty($tags)) {
+                $apiRequest->put('tags', base64_encode(json_encode($tags)));
+            }
+            if (!empty($color)) {
+                $apiRequest->put('color', $color);
+            }
+            return EcomApi::updateAnalyzeData($apiRequest->toArray());
+        }
+
+        /**
          * Upload the file in Storage
          *
          * @param $file

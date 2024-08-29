@@ -4,6 +4,7 @@
 
     use App\Http\Requests\GetDetectionResponseRequest;
     use App\Http\Requests\ImageAnalysisStoreRequest;
+    use App\Http\Requests\UpdateAnalyzeDataRequest;
     use App\Repositories\ImageAnalyzer\ImageAnalyzerRepositoryInterface;
     use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
@@ -58,4 +59,21 @@
                 empty($data) ? 204 : 200
             );
         }
+
+        /**
+         * Fetch the analyze data from ML
+         *
+         * @param UpdateAnalyzeDataRequest $request
+         *
+         * @return \Illuminate\Http\JsonResponse
+         */
+        public function updateAnalyzeData(UpdateAnalyzeDataRequest $request): JsonResponse
+        {
+            $data = $this->imageAnalyzer->updateAnalyzeData($request->all());
+            return response()->json(
+                $data,
+                empty($data) ? 204 : 200
+            );
+        }
+
     }

@@ -40,4 +40,14 @@
         {
             return $this->imageAnalyzerService->getDetectionResponse($request);
         }
+
+        /**
+         * @param array $request
+         *
+         * @return array
+         */
+        public function updateAnalyzeData(array $request): array
+        {
+            return $this->imageAnalyzerService->updateAnalyzeData($request);
+        }
     }

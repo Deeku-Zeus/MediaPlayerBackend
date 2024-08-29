@@ -20,4 +20,11 @@
          * @return array
          */
         public function getDetectionResponse(array $request): array;
+
+        /**
+         * @param array $request
+         *
+         * @return array
+         */
+        public function updateAnalyzeData(array $request): array;
     }
