@@ -100,7 +100,7 @@
                     "message" => "UID is not provided",
                 ];
             }
-            $tags = $request->get('tags');
+            $tags = explode(',',$request->get('tags'));
             $color = $request->get('color');
             if (empty($tags) && empty($color)) {
                 return [
