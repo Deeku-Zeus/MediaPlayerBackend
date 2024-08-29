@@ -143,6 +143,27 @@
         }
 
         /**
+         * Get Response History of Video
+         *
+         * @param $request
+         *
+         * @return array
+         */
+        public function getEcomProducts($request): array
+        {
+            $request = collect($request);
+            $categories = $request->get('category');
+            if (!$categories){
+                return [
+                    "result"  => false,
+                    "status"  => "failed",
+                    "message" => "Category is not provided",
+                ];
+            }
+            return EcomApi::getEcomProducts($request->toArray());
+        }
+
+        /**
          * Upload the file in Storage
          *
          * @param $file

@@ -4,6 +4,7 @@
 
     use App\Http\Requests\GetAnalyzedDataHistoryRequest;
     use App\Http\Requests\GetDetectionResponseRequest;
+    use App\Http\Requests\GetEcomProductsRequest;
     use App\Http\Requests\ImageAnalysisStoreRequest;
     use App\Http\Requests\UpdateAnalyzeDataRequest;
     use App\Repositories\ImageAnalyzer\ImageAnalyzerRepositoryInterface;
@@ -87,6 +88,21 @@
         public function getResponseHistory(GetAnalyzedDataHistoryRequest $request): JsonResponse
         {
             $data = $this->imageAnalyzer->getResponseHistory($request->all());
+            return response()->json(
+                $data,
+                empty($data) ? 204 : 200
+            );
+        }
+        /**
+         * Fetch the analyze data from ML
+         *
+         * @param \App\Http\Requests\GetAnalyzedDataHistoryRequest $request
+         *
+         * @return \Illuminate\Http\JsonResponse
+         */
+        public function getEcomProducts(GetEcomProductsRequest $request): JsonResponse
+        {
+            $data = $this->imageAnalyzer->getEcomProducts($request->all());
             return response()->json(
                 $data,
                 empty($data) ? 204 : 200

@@ -8,3 +8,4 @@ Route::post('/v1/get/imageAnalyzer',[ImageAnalysisController::class,'storeAnalyz
 Route::post('/v1/get/getDetectionResponse',[ImageAnalysisController::class,'getDetectionResponse']);
 Route::post('/v1/put/updateAnalyzeData',[ImageAnalysisController::class,'updateAnalyzeData']);
 Route::post('/v1/get/getResponseHistory',[ImageAnalysisController::class,'getResponseHistory']);
+Route::post('/v1/get/getEcomProducts',[ImageAnalysisController::class,'getEcomProducts']);

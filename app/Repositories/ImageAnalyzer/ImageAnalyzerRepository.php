@@ -55,4 +55,9 @@
         {
             return $this->imageAnalyzerService->getResponseHistory($request);
         }
+
+        public function getEcomProducts(array $request): array
+        {
+            return $this->imageAnalyzerService->getEcomProducts($request);
+        }
     }
