@@ -70,4 +70,15 @@
         {
             return $this->util->post('v1/ecomBackend/put/updateAnalyzeData', $request);
         }
+        /**
+         * @param $request
+         *
+         * @return mixed
+         * @throws \Illuminate\Http\Client\ConnectionException
+         * @throws \Illuminate\Http\Client\RequestException
+         */
+        public function getResponseHistory($request): mixed
+        {
+            return $this->util->post('v1/ecomBackend/get/getResponseHistory', $request);
+        }
     }

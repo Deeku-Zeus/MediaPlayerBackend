@@ -50,4 +50,9 @@
         {
             return $this->imageAnalyzerService->updateAnalyzeData($request);
         }
+
+        public function getResponseHistory(array $request): array
+        {
+            return $this->imageAnalyzerService->getResponseHistory($request);
+        }
     }

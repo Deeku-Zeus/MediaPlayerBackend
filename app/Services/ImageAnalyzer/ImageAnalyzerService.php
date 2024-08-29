@@ -119,6 +119,28 @@
             }
             return EcomApi::updateAnalyzeData($apiRequest->toArray());
         }
+        /**
+         * Get Response History of Video
+         *
+         * @param $request
+         *
+         * @return array
+         */
+        public function getResponseHistory($request): array
+        {
+            $request = collect($request);
+            $videoName = $request->get('videoName');
+            if (!$videoName){
+                return [
+                    "result"  => false,
+                    "status"  => "failed",
+                    "message" => "Video Name is not provided",
+                ];
+            }
+            $page = $request->get('page',1);
+            $apiRequest = collect(['videoName'=>$videoName,'page'=>$page]);
+            return EcomApi::getResponseHistory($apiRequest->toArray());
+        }
 
         /**
          * Upload the file in Storage

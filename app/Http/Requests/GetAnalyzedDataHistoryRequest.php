@@ -7,7 +7,7 @@
     use Illuminate\Http\Exceptions\HttpResponseException;
     use Illuminate\Support\Facades\Log;
 
-    class GetDetectionResponseRequest extends FormRequest
+    class GetAnalyzedDataHistoryRequest extends FormRequest
     {
         /**
          * Determine if the user is authorized to make this request.
@@ -25,7 +25,8 @@
         public function rules(): array
         {
             return [
-                'request_token' => 'required|string'
+                'videoName' => 'required|string',
+                'page'      => 'nullable'
             ];
         }
 
@@ -37,8 +38,8 @@
         public function messages(): array
         {
             return [
-                'request_token.required' => 'The Request Token is required.',
-                'request_token.string'   => 'The request token must be a string.',
+                'videoName.required' => 'The Video Name is required.',
+                'videoName.string'   => 'The Video Name must be a string.',
             ];
         }
 

@@ -6,4 +6,5 @@ use App\Http\Controllers\ImageAnalysisController;
 // Define an open API route
 Route::post('/v1/get/imageAnalyzer',[ImageAnalysisController::class,'storeAnalyzeRequest']);
 Route::post('/v1/get/getDetectionResponse',[ImageAnalysisController::class,'getDetectionResponse']);
-Route::post('/v1/get/updateAnalyzeData',[ImageAnalysisController::class,'updateAnalyzeData']);
+Route::post('/v1/put/updateAnalyzeData',[ImageAnalysisController::class,'updateAnalyzeData']);
+Route::post('/v1/get/getResponseHistory',[ImageAnalysisController::class,'getResponseHistory']);
