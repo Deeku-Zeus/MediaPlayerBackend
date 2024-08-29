@@ -36,7 +36,7 @@
         }
 
         /**
-         * @param $requestToken
+         * @param $request
          *
          * @return mixed
          * @throws \Illuminate\Http\Client\ConnectionException
@@ -44,7 +44,7 @@
          */
         public function getDetectionResponse($request): mixed
         {
-            return $this->util->post('v1/ecomBackend/get/analyzedResponse', $request);
+           return $this->util->post('v1/ecomBackend/get/analyzedResponse', $request);
         }
         /**
          * @param $requestToken

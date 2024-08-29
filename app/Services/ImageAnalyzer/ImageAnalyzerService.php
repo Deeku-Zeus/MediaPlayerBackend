@@ -14,6 +14,7 @@
     class ImageAnalyzerService
     {
         const OBJECT_COUNT = 5;
+
         /**
          * ImageAnalyzerService constructor.
          */
@@ -34,7 +35,7 @@
             $request = collect($request);
             $requestToken = $request->get('request_token', (string)Str::uuid() . '-' . time());
             $filePath = $this->uploadFile($request->get('image'));
-            $imagename =  basename($filePath);
+            $imagename = basename($filePath);
             $apiRequest = [
                 'image'         => $filePath,
                 'request_token' => $requestToken,
@@ -55,8 +56,8 @@
             //Call ML API as a parallel process
             $response->put('is_analyzed', false);
             $response->put('request_token', $requestToken);
-            $request = ['image'=>$imagename,'object_count'=>self::OBJECT_COUNT];
-            AnalyzeImage::dispatch($request,$requestToken);
+            $request = ['image' => $imagename, 'object_count' => self::OBJECT_COUNT];
+            AnalyzeImage::dispatch($request, $requestToken);
             return $response->toArray();
         }
 
@@ -69,14 +70,16 @@
          */
         public function getDetectionResponse($request): array
         {
+            $request = collect($request);
             $response = collect(['result' => true, 'status' => 'success', 'message' => 'Image analyze response fetched successfully.']);
-            $requestToken = collect($request)->get('request_token');
+            $requestToken = $request->get('request_token');
+            $uid = $request->get('uid', []);
             if (!$requestToken) {
                 $response->put('result', false);
                 $response->put('status', 'error');
                 $response->put('message', 'Request token required');
             }
-            return EcomApi::getDetectionResponse(['request_token' => $requestToken]);
+            return EcomApi::getDetectionResponse(['request_token' => $requestToken, 'uid' => $uid]);
         }
 
         /**
