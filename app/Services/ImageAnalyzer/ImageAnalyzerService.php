@@ -152,7 +152,9 @@
         public function getEcomProducts($request): array
         {
             $request = collect($request);
-            $categories = $request->get('category');
+            $categories = explode(',',$request->get('category')) ?? [];
+            $color = $request->get('color');
+            $apiRequest = ['category'=>$categories,'color'=>$color];
             if (!$categories){
                 return [
                     "result"  => false,
@@ -160,7 +162,7 @@
                     "message" => "Category is not provided",
                 ];
             }
-            return EcomApi::getEcomProducts($request->toArray());
+            return EcomApi::getEcomProducts($apiRequest);
         }
 
         /**

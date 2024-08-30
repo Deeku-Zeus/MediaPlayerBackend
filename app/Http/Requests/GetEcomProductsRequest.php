@@ -26,7 +26,7 @@
         {
             return [
                 'color'    => 'nullable|string',
-                'category' => 'required|array'
+                'category' => 'required|string'
             ];
         }
 
@@ -40,7 +40,7 @@
             return [
                 'category.required' => 'The category is required.',
                 'color.string'      => 'The color must be a string.',
-                'category.array'    => 'The category must be an array.',
+                'category.string'    => 'The category must be a string.',
             ];
         }
 
