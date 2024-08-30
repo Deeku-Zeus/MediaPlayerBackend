@@ -164,6 +164,17 @@
             }
             return EcomApi::getEcomProducts($apiRequest);
         }
+        /**
+         * Get Response History of Video
+         *
+         * @param $request
+         *
+         * @return array
+         */
+        public function getUserRequests($request): array
+        {
+            return EcomApi::getUserRequests([]);
+        }
 
         /**
          * Upload the file in Storage

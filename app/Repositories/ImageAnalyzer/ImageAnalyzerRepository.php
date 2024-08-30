@@ -60,4 +60,9 @@
         {
             return $this->imageAnalyzerService->getEcomProducts($request);
         }
+
+        public function getUserRequests(array $request): array
+        {
+            return $this->imageAnalyzerService->getUserRequests($request);
+        }
     }

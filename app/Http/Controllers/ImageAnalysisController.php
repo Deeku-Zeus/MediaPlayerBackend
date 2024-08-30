@@ -108,5 +108,20 @@
                 empty($data) ? 204 : 200
             );
         }
+        /**
+         * Fetch the analyze data from ML
+         *
+         * @param \App\Http\Requests\GetAnalyzedDataHistoryRequest $request
+         *
+         * @return \Illuminate\Http\JsonResponse
+         */
+        public function getUserRequests(Request $request): JsonResponse
+        {
+            $data = $this->imageAnalyzer->getUserRequests($request->all());
+            return response()->json(
+                $data,
+                empty($data) ? 204 : 200
+            );
+        }
 
     }

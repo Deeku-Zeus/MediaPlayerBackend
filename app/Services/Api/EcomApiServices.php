@@ -92,4 +92,15 @@
         {
             return $this->util->post('v1/ecomBackend/get/getEcomProducts', $request);
         }
+        /**
+         * @param $request
+         *
+         * @return mixed
+         * @throws \Illuminate\Http\Client\ConnectionException
+         * @throws \Illuminate\Http\Client\RequestException
+         */
+        public function getUserRequests($request): mixed
+        {
+            return $this->util->post('v1/ecomBackend/get/getUserRequests', $request);
+        }
     }
