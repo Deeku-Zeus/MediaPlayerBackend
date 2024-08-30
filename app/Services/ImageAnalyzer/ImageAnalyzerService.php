@@ -138,7 +138,8 @@
                 ];
             }
             $page = $request->get('page',1);
-            $apiRequest = collect(['videoName'=>$videoName,'page'=>$page]);
+            $limit = $request->get('limit',10);
+            $apiRequest = collect(['videoName'=>$videoName,'page'=>$page,'limit'=>$limit]);
             return EcomApi::getResponseHistory($apiRequest->toArray());
         }
 
